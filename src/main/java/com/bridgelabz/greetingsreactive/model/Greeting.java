@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.aot.generate.GeneratedClass;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -13,10 +14,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Table(name = "greeting")
 public class Greeting {
     @Id
+    @Generated
     private Integer id;
     private String message;
-
-    public Greeting(String message) {
-        this.message = message;
-    }
 }
