@@ -28,4 +28,9 @@ public class GreetingsController {
     public Mono<Greeting> getGreeting(@PathVariable int id) {
         return service.getGreetingByID(id);
     }
+
+    @PutMapping("/update")
+    public Mono<Greeting> updateGreeting(@RequestBody Greeting greeting) {
+        return service.save(greeting);
+    }
 }
