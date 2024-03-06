@@ -32,6 +32,6 @@ public class GreetingService implements GreetingServiceInterface {
 
     @Override
     public Mono<Void> deleteGreeting(int id) {
-            return greetingRepository.deleteById(id);
+        return greetingRepository.deleteById(id);
     }
 }
