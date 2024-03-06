@@ -10,4 +10,5 @@ public interface GreetingServiceInterface {
     Mono<Greeting> save(Greeting greeting);
     Flux<Greeting> getAll();
 
+    Mono<Greeting> getGreetingByID(int id);
 }

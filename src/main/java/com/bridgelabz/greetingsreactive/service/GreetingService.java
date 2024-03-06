@@ -22,4 +22,9 @@ public class GreetingService implements GreetingServiceInterface {
     public Flux<Greeting> getAll() {
         return greetingRepository.findAll();
     }
+
+    @Override
+    public Mono<Greeting> getGreetingByID(int id) {
+        return greetingRepository.findById(id);
+    }
 }

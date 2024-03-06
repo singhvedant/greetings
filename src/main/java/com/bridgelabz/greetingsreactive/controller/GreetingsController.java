@@ -23,4 +23,9 @@ public class GreetingsController {
     public Flux<Greeting> all() {
         return service.getAll();
     }
+
+    @GetMapping("/get/{id}")
+    public Mono<Greeting> getGreeting(@PathVariable int id) {
+        return service.getGreetingByID(id);
+    }
 }
