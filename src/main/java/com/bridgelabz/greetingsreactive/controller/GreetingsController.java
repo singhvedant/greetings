@@ -1,8 +1,11 @@
 package com.bridgelabz.greetingsreactive.controller;
 
 import com.bridgelabz.greetingsreactive.model.Greeting;
+import com.bridgelabz.greetingsreactive.model.Response;
 import com.bridgelabz.greetingsreactive.service.GreetingServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -32,5 +35,12 @@ public class GreetingsController {
     @PutMapping("/update")
     public Mono<Greeting> updateGreeting(@RequestBody Greeting greeting) {
         return service.save(greeting);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Mono<ResponseEntity<Response>> deleteGreeting(@PathVariable int id) {
+        return service.deleteGreeting(id)
+                .then(Mono.just(new ResponseEntity<>(new Response(200, "Deleted"), HttpStatus.OK)))
+                .defaultIfEmpty(new ResponseEntity<>(new Response(400, "Not Found"), HttpStatus.NOT_FOUND));
     }
 }
